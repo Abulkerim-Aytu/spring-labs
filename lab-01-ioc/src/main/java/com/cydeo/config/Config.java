@@ -12,7 +12,7 @@ public class Config {
     @Bean
     public Current initializeCur (){
         return new Current();
-    };
+    }
 
     @Bean
     public Saving initializeSa(){

@@ -16,11 +16,10 @@ public class Main {
         customerBalance.addBalance(new BigDecimal(150));
         giftCardBalance.addBalance(new BigDecimal(120));
 
-        BalanceManager balanceManager = new BalanceManager(customerBalance);
-        BalanceManager balanceManager1 = new BalanceManager(giftCardBalance);
+        BalanceManager balanceManager = new BalanceManager();
 
-        System.out.println(balanceManager.checkout(new BigDecimal(80)));
-        System.out.println(balanceManager1.checkout(new BigDecimal(-80)));
+        System.out.println(balanceManager.checkout(customerBalance,new BigDecimal(80)));
+        System.out.println(balanceManager.checkout(giftCardBalance,new BigDecimal(-80)));
     }
 
 }

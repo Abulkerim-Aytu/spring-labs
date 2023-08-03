@@ -1,5 +1,10 @@
-package com.cydeo.loosely;
+package com.cydeo;
 
+
+import com.cydeo.loosely.Balance;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 

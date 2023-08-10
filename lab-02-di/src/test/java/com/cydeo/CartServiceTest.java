@@ -4,8 +4,8 @@ import com.cydeo.config.ConfigApp;
 import com.cydeo.model.Cart;
 import com.cydeo.model.Product;
 import com.cydeo.repository.CartRepository;
-import com.cydeo.service.CartServiceImpl;
-import com.cydeo.service.StockService;
+import com.cydeo.Service.CartServiceImpl;
+import com.cydeo.Service.StockService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-
-import static org.mockito.Mockito.when;
 
 @RunWith( SpringRunner.class )
 @ContextConfiguration(classes = ConfigApp.class)

@@ -1,10 +1,13 @@
-package com.cydeo.proxy;
+package com.cydeo.Service;
 
 import com.cydeo.model.Recipe;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InstagramShareService implements ShareService {
+@Qualifier("FACE")
+public class FacebookShareService implements ShareService {
+
     @Override
     public void share(Recipe recipe) {
         System.out.println("Sharing on Facebook: " + recipe);

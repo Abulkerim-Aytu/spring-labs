@@ -1,6 +1,7 @@
 package com.cydeo;
 
 
+import com.cydeo.Service.RecipeService;
 import com.cydeo.model.Ingredients;
 import com.cydeo.model.QuantityType;
 import com.cydeo.model.RecipeType;
@@ -11,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication

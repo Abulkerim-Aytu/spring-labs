@@ -13,7 +13,7 @@ public class Recipe {
     private String name;
     private String duration;
     private String preparation;
-    private Ingredients ingredients;
+    private List<Ingredients> ingredients;
     private RecipeType recipeType;
 
 

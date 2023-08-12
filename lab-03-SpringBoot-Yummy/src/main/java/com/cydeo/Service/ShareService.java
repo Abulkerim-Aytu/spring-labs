@@ -1,4 +1,4 @@
-package com.cydeo.proxy;
+package com.cydeo.Service;
 
 import com.cydeo.model.Recipe;
 import org.springframework.stereotype.Component;

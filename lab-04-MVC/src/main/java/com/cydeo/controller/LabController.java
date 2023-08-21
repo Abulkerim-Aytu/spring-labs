@@ -11,18 +11,13 @@ import java.util.List;
 public class LabController {
 
     @RequestMapping("/lab")
-    public String lab(String firstLab, String secondLab,String thirdLab,  String fourthLab,String fifthLab, Model model){
-        firstLab ="lab-00-coupling";
-        secondLab="lab-01-ioc";
-        thirdLab="lab-02-di";
-        fourthLab="lab-03-springBoot";
-        fifthLab="lab-04-springMvs";
+    public String lab( Model model){
 
-        model.addAttribute("firstLab",firstLab);
-        model.addAttribute("secondLab",secondLab);
-        model.addAttribute("thirdLab",thirdLab);
-        model.addAttribute("fourthLab",fourthLab);
-        model.addAttribute("fifthLab",fifthLab);
+        model.addAttribute("firstLab","lab-00-coupling");
+        model.addAttribute("secondLab","lab-01-ioc");
+        model.addAttribute("thirdLab","lab-02-di");
+        model.addAttribute("fourthLab","lab-03-springBoot");
+        model.addAttribute("fifthLab","lab-04-springMvs");
 
         return "lab/lab-list";
     }

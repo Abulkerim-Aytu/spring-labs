@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class ProfileController {
 
     @RequestMapping("/profile")
-    public String profile( Model model){
+    public String profile(Model model){
 
         Profile person =new Profile("Aytu","kerim","Hilal","05454892528","Abdukerim478@gmail.com", LocalDate.now().atStartOfDay());
 

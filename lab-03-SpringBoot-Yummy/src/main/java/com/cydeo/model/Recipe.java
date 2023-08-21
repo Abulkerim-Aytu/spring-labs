@@ -1,17 +1,19 @@
 package com.cydeo.model;
 
+import com.cydeo.enums.RecipeType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 public class Recipe {
-    private String id;
+    private UUID id;
     private String name;
-    private String duration;
+    private int duration;
     private String preparation;
     private List<Ingredients> ingredients;
     private RecipeType recipeType;

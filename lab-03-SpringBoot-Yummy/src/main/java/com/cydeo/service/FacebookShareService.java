@@ -1,4 +1,4 @@
-package com.cydeo.Service;
+package com.cydeo.service;
 
 import com.cydeo.model.Recipe;
 import org.springframework.beans.factory.annotation.Qualifier;

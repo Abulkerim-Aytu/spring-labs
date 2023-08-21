@@ -1,18 +1,11 @@
 package com.cydeo;
 
 
-import com.cydeo.Service.RecipeService;
-import com.cydeo.model.Ingredients;
-import com.cydeo.model.QuantityType;
-import com.cydeo.model.RecipeType;
-import com.cydeo.model.Recipe;
+import com.cydeo.service.RecipeService;
 import com.github.javafaker.Faker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class YummyApplication {

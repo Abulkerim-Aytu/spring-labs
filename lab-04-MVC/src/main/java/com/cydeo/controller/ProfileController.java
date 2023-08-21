@@ -11,11 +11,11 @@ import java.time.LocalDate;
 public class ProfileController {
 
     @RequestMapping("/profile")
-    public String profile(Profile profile, Model model){
+    public String profile( Model model){
 
-        profile=new Profile("Aytu","kerim","Hilal","05454892528","Abdukerim478@gmail.com", LocalDate.now().atStartOfDay());
+        Profile person =new Profile("Aytu","kerim","Hilal","05454892528","Abdukerim478@gmail.com", LocalDate.now().atStartOfDay());
 
-        model.addAttribute("profile",profile);
+        model.addAttribute("profile",person);
 
         return "profile/profile-info";
     }

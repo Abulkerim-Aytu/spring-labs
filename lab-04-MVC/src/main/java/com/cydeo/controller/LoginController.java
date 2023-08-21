@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @RequestMapping("/login/{email}/{phoneNumber}")
-    public String login(@PathVariable String email, @PathVariable int phoneNumber,String loginMessage, Model model) {
-        loginMessage = "Login successful";
+    public String login(@PathVariable String email, @PathVariable String phoneNumber, Model model) {
         model.addAttribute("email",email);
         model.addAttribute("phoneNumber",phoneNumber);
-        model.addAttribute("loginMessage",loginMessage);
+        model.addAttribute("loginMessage","Login successful");
         return "/login/login-info";
     }
 }

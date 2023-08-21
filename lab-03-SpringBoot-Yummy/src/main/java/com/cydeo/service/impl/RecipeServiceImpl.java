@@ -9,6 +9,7 @@ import com.cydeo.repository.RecipeRepository;
 import com.cydeo.service.RecipeService;
 import com.cydeo.service.ShareService;
 import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public class RecipeServiceImpl implements RecipeService {
     private final ShareService shareService;
     private final Faker faker;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository, ShareService shareService, Faker faker) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, @Qualifier ShareService facebookShareServiceImpl, Faker faker) {
         this.recipeRepository = recipeRepository;
-        this.shareService = shareService;
+        this.shareService = facebookShareServiceImpl;
         this.faker = faker;
     }
 

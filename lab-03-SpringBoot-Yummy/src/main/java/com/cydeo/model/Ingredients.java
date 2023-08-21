@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Component
 public class Ingredients {
     private String name;

@@ -9,9 +9,8 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Recipe {
-    private UUID id;
+    private UUID recipeId;
     private String name;
     private int duration;
     private String preparation;

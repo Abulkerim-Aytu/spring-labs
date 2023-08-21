@@ -2,7 +2,8 @@ package com.cydeo.service.impl;
 
 import com.cydeo.enums.QuantityType;
 import com.cydeo.enums.RecipeType;
-import com.cydeo.model.Ingredient;
+import com.cydeo.model.Ingredients;
+import com.cydeo.model.Ingredients;
 import com.cydeo.model.Recipe;
 import com.cydeo.repository.RecipeRepository;
 import com.cydeo.service.RecipeService;
@@ -48,11 +49,11 @@ public class RecipeServiceImpl implements RecipeService {
         return true;
     }
 
-    private List<Ingredient> prepareIngredient() {
-        List<Ingredient> ingredientList = new ArrayList<>();
+    private List<Ingredients> prepareIngredient() {
+        List<Ingredients> ingredientList = new ArrayList<>();
 
         for (int i = 0; i < generateRandomValue(); i++) {
-             Ingredient ingredient = new Ingredient();
+             Ingredients ingredient = new Ingredients();
              ingredient.setName(faker.food().ingredient());
              ingredient.setQuantity(generateRandomValue());
              ingredient.setQuantityType(QuantityType.TBSP);

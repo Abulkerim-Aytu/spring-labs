@@ -19,14 +19,14 @@ public class ProductServiceImpl implements ProductService {
     }
     @Override
     public boolean productCreate(Product product){
-        // todo implement method
-        return true;
+        product.setId(UUID.randomUUID());
+        //product needs to be saved
+        return productRepository.save(product);
     }
 
     @Override
     public List<Product> listProduct() {
-        // todo implement method
-        return new ArrayList<>();
+     return productRepository.findAll();
     }
 
     @Override

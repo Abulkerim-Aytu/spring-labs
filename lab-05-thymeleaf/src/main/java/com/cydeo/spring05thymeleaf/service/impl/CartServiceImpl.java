@@ -24,7 +24,6 @@ public class CartServiceImpl implements CartService {
     public Cart addToCart(UUID productId, Integer quantity){
         //todo retrieve product from repository method
 
-
         //todo initialise cart item
         //todo calculate cart total amount
         //todo add to cart

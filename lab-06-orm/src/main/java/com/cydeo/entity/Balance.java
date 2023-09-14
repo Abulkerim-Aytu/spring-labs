@@ -14,12 +14,12 @@ import java.math.BigDecimal;
 
 public class Balance extends BaseEntity{
 
-private int amount;
+private BigDecimal amount;
 
     @OneToOne
     private Customer customer;
 
-    public Balance(int amount) {
+    public Balance(BigDecimal amount) {
         this.amount = amount;
     }
 }

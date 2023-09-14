@@ -9,7 +9,8 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 
 public class Payment extends BaseEntity{
+
 }

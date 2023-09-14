@@ -5,12 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import java.security.SecureRandom;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Customer extends BaseEntity{
 
     private String email;
@@ -18,5 +20,10 @@ public class Customer extends BaseEntity{
     private String lastName;
     private String userName;
 
-
+    public Customer(String email, String firstName, String lastName, String userName) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+    }
 }

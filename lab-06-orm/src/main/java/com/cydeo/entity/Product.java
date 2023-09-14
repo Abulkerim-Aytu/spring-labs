@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 
 public class Product extends BaseEntity{
 }

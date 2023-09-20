@@ -45,6 +45,8 @@ public class QueryDemo implements CommandLineRunner {
         System.out.println("-----------CATEGORY----------");
         //System.out.println("DENEME:" + categoryRepository.findTop3CategoryOrderByNameDesc());
 
+        System.out.println("-----------CUSTOMER----------");
+        System.out.println("DENEME:" + customerRepository.retrieveByEmail("cmulqueeny1@networkadvertising.org"));
 
     }
 }

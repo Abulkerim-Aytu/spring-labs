@@ -1,4 +1,6 @@
 package com.cydeo;
+import com.cydeo.enums.CartState;
+import com.cydeo.enums.DiscountType;
 import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -33,7 +35,13 @@ public class QueryDemo implements CommandLineRunner {
         System.out.println("DENEME:" + addressRepository.retrieveAllAddressWithId(7L));
 
         System.out.println("-----------BALANCE----------");
-        System.out.println("DENEME:" + balanceRepository.retrieveToLessThan(BigDecimal.valueOf(100)));
+        //System.out.println("DENEME:" + balanceRepository.retrieveToLessThan(BigDecimal.valueOf(900)));
+
+        System.out.println("-----------CARTITEM----------");
+        //System.out.println("DENEME:" + cartItemRepository.retrieveStateName(CartState.SOLD,"Tomatoes"));
+
+        System.out.println("-----------CART----------");
+        System.out.println("DENEME:" + cartRepository.findByCustomerIdAndCartStateAndDiscountIdIsNotNull(40L,CartState.CREATED));
 
 
     }

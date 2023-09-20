@@ -28,7 +28,8 @@ public class QueryDemo implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("-----------ADDRESS----------");
-        System.out.println("findByCustomerFirstName:" + addressRepository.findByCustomerFirstName("Arley"));
+        System.out.println("DENEME:" + addressRepository.retrieveAllAddressWithId(7L));
+
 
     }
 }

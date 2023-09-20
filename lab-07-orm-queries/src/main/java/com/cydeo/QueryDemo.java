@@ -1,11 +1,8 @@
 package com.cydeo;
 import com.cydeo.enums.CartState;
-import com.cydeo.enums.DiscountType;
 import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 
 @Component
 public class QueryDemo implements CommandLineRunner {
@@ -17,8 +14,9 @@ public class QueryDemo implements CommandLineRunner {
     private final CustomerRepository customerRepository;
     private final DiscountRepository discountRepository;
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public QueryDemo(AddressRepository addressRepository, BalanceRepository balanceRepository, CartItemRepository cartItemRepository, CartRepository cartRepository, CustomerRepository customerRepository, DiscountRepository discountRepository, ProductRepository productRepository) {
+    public QueryDemo(AddressRepository addressRepository, BalanceRepository balanceRepository, CartItemRepository cartItemRepository, CartRepository cartRepository, CustomerRepository customerRepository, DiscountRepository discountRepository, ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.addressRepository = addressRepository;
         this.balanceRepository = balanceRepository;
         this.cartItemRepository = cartItemRepository;
@@ -26,6 +24,7 @@ public class QueryDemo implements CommandLineRunner {
         this.customerRepository = customerRepository;
         this.discountRepository = discountRepository;
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
 
@@ -42,6 +41,9 @@ public class QueryDemo implements CommandLineRunner {
 
         System.out.println("-----------CART----------");
         //System.out.println("DENEME:" + cartRepository.retrieveDiscountIdIsNotNull(40L,CartState.CREATED));
+
+        System.out.println("-----------CATEGORY----------");
+        //System.out.println("DENEME:" + categoryRepository.findTop3CategoryOrderByNameDesc());
 
 
     }

@@ -1,8 +1,11 @@
 package com.cydeo;
 import com.cydeo.enums.CartState;
+import com.cydeo.enums.DiscountType;
 import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @Component
 public class QueryDemo implements CommandLineRunner {
@@ -46,7 +49,10 @@ public class QueryDemo implements CommandLineRunner {
         //System.out.println("DENEME:" + categoryRepository.findTop3CategoryOrderByNameDesc());
 
         System.out.println("-----------CUSTOMER----------");
-        System.out.println("DENEME:" + customerRepository.retrieveByEmail("cmulqueeny1@networkadvertising.org"));
+        //System.out.println("DENEME:" + customerRepository.fi("cmulqueeny1@networkadvertising.org"));
+
+        System.out.println("-----------DISCOUNT----------");
+        System.out.println("DENEME:" + discountRepository.retrieveBetween(BigDecimal.ONE,BigDecimal.valueOf(25.00)));
 
     }
 }

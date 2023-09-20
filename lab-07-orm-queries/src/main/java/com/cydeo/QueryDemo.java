@@ -3,6 +3,8 @@ import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class QueryDemo implements CommandLineRunner {
 
@@ -29,6 +31,9 @@ public class QueryDemo implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("-----------ADDRESS----------");
         System.out.println("DENEME:" + addressRepository.retrieveAllAddressWithId(7L));
+
+        System.out.println("-----------BALANCE----------");
+        System.out.println("DENEME:" + balanceRepository.retrieveToLessThan(BigDecimal.valueOf(100)));
 
 
     }

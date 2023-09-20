@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository<Address,Long> {
     //Write a derived query to get all address with a specific customer
-    List<Address> findByCustomer(Customer customer);
+    //List<Address> findByCustomer(Customer customer);
     //Write a derived query to get address with a specific street
     //Write a derived query to get top 3 address with a specific customer email
     //Write a derived query to get all address with a specific customer and name

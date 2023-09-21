@@ -1,8 +1,12 @@
 package com.cydeo;
+import com.cydeo.enums.CartState;
+import com.cydeo.enums.DiscountType;
 import com.cydeo.enums.PaymentMethod;
 import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @Component
 public class QueryDemo implements CommandLineRunner {
@@ -40,10 +44,10 @@ public class QueryDemo implements CommandLineRunner {
         //System.out.println("DENEME:" + balanceRepository.retrieveToLessThan(BigDecimal.valueOf(900)));
 
         System.out.println("-----------CARTITEM----------");
-        //System.out.println("DENEME:" + cartItemRepository.retrieveStateName(CartState.SOLD,"Tomatoes"));
+        System.out.println("DENEME:" + cartItemRepository.retrieveAllCartIDiscountType(CartState.CREATED, DiscountType.RATE_BASED));
 
         System.out.println("-----------CART----------");
-        //System.out.println("DENEME:" + cartRepository.retrieveDiscountIdIsNotNull(40L,CartState.CREATED));
+        System.out.println("DENEME:" + cartRepository.retrieveDiscountIdIsNotNull(40L,CartState.CREATED));
 
         System.out.println("-----------CATEGORY----------");
         //System.out.println("DENEME:" + categoryRepository.findTop3CategoryOrderByNameDesc());
@@ -55,9 +59,9 @@ public class QueryDemo implements CommandLineRunner {
         //System.out.println("DENEME:" + discountRepository.retrieveBetween(BigDecimal.ONE,BigDecimal.valueOf(25.00)));
 
         System.out.println("-----------PRODUCT----------");
-        //System.out.println("DENEME:" + productRepository.findByCategoryId(4L));
+        System.out.println("DENEME:" + productRepository.retrieveSpecific(4L, BigDecimal.valueOf(50.00)));
 
         System.out.println("-----------ORDER----------");
-        //System.out.println("DENEME:" + orderRepository.findByTotalPriceEqualsPaidPrice());
+        //System.out.println("DENEME:" + orderRepository.retrieveByName("Tomatoes"));
     }
 }

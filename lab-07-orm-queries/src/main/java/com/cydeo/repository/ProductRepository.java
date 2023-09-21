@@ -32,6 +32,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findByCategoryId(Long id);
 
     //Write a native query to get all product by specific categoryId and price greater than specific amount
-    //@Query(value = "SELECT * FROM Product WHERE ")
-    //List<Product> retrieveSpecific();
+    //@Query(value = "SELECT * FROM Product p JOIN Category c ON P.id = C.id WHERE c.id = ?1 AND p.price > ?2",nativeQuery = true)
+    //List<Product> retrieveSpecific(Long id,BigDecimal price);
 }

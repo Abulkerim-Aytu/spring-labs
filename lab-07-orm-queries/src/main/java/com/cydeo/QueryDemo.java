@@ -59,7 +59,7 @@ public class QueryDemo implements CommandLineRunner {
         //System.out.println("DENEME:" + discountRepository.retrieveBetween(BigDecimal.ONE,BigDecimal.valueOf(25.00)));
 
         System.out.println("-----------PRODUCT----------");
-        System.out.println("DENEME:" + productRepository.retrieveSpecific(4L, BigDecimal.valueOf(50.00)));
+        //System.out.println("DENEME:" + productRepository.retrieveSpecific(4L, BigDecimal.valueOf(50.00)));
 
         System.out.println("-----------ORDER----------");
         //System.out.println("DENEME:" + orderRepository.retrieveByName("Tomatoes"));

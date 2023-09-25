@@ -10,7 +10,7 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
     //Write a derived query to get category by name
-    List<Category> findByName(String name);
+    Category findByName(String name);
     //Write a derived query to get top 3 categories order by name desc
-    //List<Category> findTop3CategoryOrderByNameDesc();
+    List<Category> findTop3ByOrderByNameDesc();
 }

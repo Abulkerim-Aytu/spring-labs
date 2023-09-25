@@ -17,7 +17,7 @@ public interface BalanceRepository extends JpaRepository<Balance,Long> {
     boolean existsBalanceByCustomer(Customer customer);
 
     //Write a derived query to get balance for specific customer
-    List<Balance> findByCustomerId(Long id);
+    Balance findByCustomerId(Long id);
     //Write a native query to get top 5 max balance
     @Query(value = "SELECT * FROM Balance ORDER BY amount DESC LIMIT 5", nativeQuery = true)
     List<Balance> retrieveTop5ByOrderByAmountDesc();

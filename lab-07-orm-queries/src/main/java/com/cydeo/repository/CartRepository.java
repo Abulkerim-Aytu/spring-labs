@@ -24,7 +24,14 @@ public interface CartRepository extends JpaRepository<Cart,Long> {
     List<Cart> findByCustomerIdAndCartStateAndDiscountIdIsNull(Long id, CartState cartState);
 
     //Write a native query to get all cart by customer and cart state and discount is not null condition
-    @Query(value = "SELECT * FROM cart WHERE customer_id = ?1 AND cart_state='?2' AND discount_id IS NOT NULL",nativeQuery = true)
-    List<Cart> retrieveDiscountIdIsNotNull(Long id, CartState cartState);
+    @Query(value= "SELECT * FROM cart c JOIN customer cu ON c.customer_id = cu.id WHERE c.cart_state = ?1 " +
+            "AND cu.id = ?2 AND discount.id <> null", nativeQuery = true)
+    List<Cart> findAllByCustomerIdAndCartStateAndDiscountIsNotNull(String cartState, Long id);
+
+    // @Query(value = "SELECT * FROM cart WHERE customer_id = ?1 AND cart_state='?2' AND discount_id IS NOT NULL",nativeQuery = true)
+    // List<Cart> retrieveDiscountIdIsNotNull(Long id, CartState cartState);
+
+
+
 
 }

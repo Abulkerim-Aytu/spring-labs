@@ -38,16 +38,16 @@ public class QueryDemo implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("-----------ADDRESS----------");
-        //System.out.println("DENEME:" + addressRepository.retrieveAllAddressWithId(7L));
+        System.out.println("DENEME:" + addressRepository.findByStreet("Tomscot"));
 
         System.out.println("-----------BALANCE----------");
         //System.out.println("DENEME:" + balanceRepository.retrieveToLessThan(BigDecimal.valueOf(900)));
 
         System.out.println("-----------CARTITEM----------");
-        System.out.println("DENEME:" + cartItemRepository.retrieveAllCartIDiscountType(CartState.CREATED, DiscountType.RATE_BASED));
+        //System.out.println("DENEME:" + cartItemRepository.retrieveAllCartIDiscountType(CartState.CREATED, DiscountType.RATE_BASED));
 
         System.out.println("-----------CART----------");
-        System.out.println("DENEME:" + cartRepository.retrieveDiscountIdIsNotNull(40L,CartState.CREATED));
+        //System.out.println("DENEME:" + cartRepository.retrieveDiscountIdIsNotNull(40L,CartState.CREATED));
 
         System.out.println("-----------CATEGORY----------");
         //System.out.println("DENEME:" + categoryRepository.findTop3CategoryOrderByNameDesc());

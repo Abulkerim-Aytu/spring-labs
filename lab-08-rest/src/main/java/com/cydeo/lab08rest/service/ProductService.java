@@ -8,10 +8,10 @@ import java.util.List;
 public interface ProductService {
     List<ProductDTO> listAllProduct();
     List<ProductDTO> listAllProductByPriceAndQuantity(BigDecimal price, Integer quantity);
-    List<ProductDTO> listAllProductByName(String name);
     List<ProductDTO> listAllProductByCategory(Long id);
     List<ProductDTO> listAllProductByPrice(BigDecimal price);
     List<ProductDTO> listTop3Product();
+    ProductDTO listAllProductByName(String name);
     ProductDTO updateProduct(ProductDTO productDTO);
     ProductDTO createProduct(ProductDTO productDTO);
 

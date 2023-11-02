@@ -33,8 +33,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDTO> listAllProductByName(String name) {
-        return null;
+    public ProductDTO listAllProductByName(String name) {
+        return mapperUtil.convert(productRepository.findFirstByName(name),new ProductDTO());
     }
 
     @Override
@@ -44,12 +44,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> listAllProductByPrice(BigDecimal price) {
-        return null;
+        List<Product> products = productRepository.findAllByPrice(price);
+        return products.stream().map(product -> mapperUtil.convert(product,new ProductDTO())).collect(Collectors.toList());
     }
 
     @Override
     public List<ProductDTO> listTop3Product() {
-        return null;
+        List<Product> products = productRepository.findTop3ByOrderByPriceDesc();
+        return products.stream().map(product -> mapperUtil.convert(product,new ProductDTO())).collect(Collectors.toList());
     }
 
     @Override

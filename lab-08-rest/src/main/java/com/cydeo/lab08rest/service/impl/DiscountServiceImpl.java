@@ -28,8 +28,9 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
-    public List<DiscountDTO> listAllDiscountByName(String name) {
-        return null;
+    public DiscountDTO listAllDiscountByName(String name) {
+        Discount discounts =discountRepository.findFirstByName(name);
+        return mapperUtil.convert(discounts,new DiscountDTO());
     }
 
     @Override

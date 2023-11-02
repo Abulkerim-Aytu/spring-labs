@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DiscountService {
     List<DiscountDTO> listAllDiscount ();
-    List<DiscountDTO> listAllDiscountByName (String name);
+    DiscountDTO listAllDiscountByName (String name);
     DiscountDTO updateDiscount (DiscountDTO dto);
     DiscountDTO createDiscount (DiscountDTO dto);
 }

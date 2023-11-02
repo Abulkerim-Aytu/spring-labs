@@ -15,15 +15,15 @@ public class DiscountController {
         this.discountService = discountService;
     }
 
-//    @GetMapping
-//    public ResponseEntity<ResponseWrapper> getCustomers(){
-//        return ResponseEntity.ok(new ResponseWrapper("true",customerService.listAllCustomer()));
-//    }
-//
-//    @GetMapping("/{email}")
-//    public ResponseEntity<ResponseWrapper> getAddressListByStartsWithAddress(@PathVariable("email") String email){
-//        return ResponseEntity.ok(new ResponseWrapper("true",customerService.listAllCustomerByEmail(email)));
-//    }
+    @GetMapping
+    public ResponseEntity<ResponseWrapper> getDiscounts(){
+        return ResponseEntity.ok(new ResponseWrapper("true",discountService.listAllDiscount()));
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<ResponseWrapper> getDiscountByName(@PathVariable("name") String name){
+        return ResponseEntity.ok(new ResponseWrapper("true",discountService.listAllDiscountByName(name)));
+    }
 //
 //    @PostMapping
 //    public ResponseEntity<ResponseWrapper> createAddress(@RequestBody CustomerDTO customerDTO){

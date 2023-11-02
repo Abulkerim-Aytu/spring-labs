@@ -22,17 +22,17 @@ public class CustomerController {
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<ResponseWrapper> getAddressListByStartsWithAddress(@PathVariable("email") String email){
+    public ResponseEntity<ResponseWrapper> getCustomerByEmail(@PathVariable("email") String email){
         return ResponseEntity.ok(new ResponseWrapper("true",customerService.listAllCustomerByEmail(email)));
     }
 
     @PostMapping
-    public ResponseEntity<ResponseWrapper> createAddress(@RequestBody CustomerDTO customerDTO){
+    public ResponseEntity<ResponseWrapper> createCustomer(@RequestBody CustomerDTO customerDTO){
         return ResponseEntity.ok(new ResponseWrapper("true", customerService.createCustomer(customerDTO)));
     }
 
     @PutMapping
-    public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody CustomerDTO customerDTO){
+    public ResponseEntity<ResponseWrapper> updateCustomer(@RequestBody CustomerDTO customerDTO){
         return ResponseEntity.ok(new ResponseWrapper("true", customerService.updateCustomer(customerDTO)));
     }
 

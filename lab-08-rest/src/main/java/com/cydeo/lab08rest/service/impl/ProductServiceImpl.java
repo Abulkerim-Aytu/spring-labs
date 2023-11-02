@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,7 +30,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> listAllProductByPriceAndQuantity(BigDecimal price, Integer quantity) {
-        return null;
+        List<Product> products = productRepository.retrieveProductListGreaterThanPriceAndLowerThanRemainingQuantity(price,quantity);
+        return products.stream().map(product -> mapperUtil.convert(product,new ProductDTO())).collect(Collectors.toList());
     }
 
     @Override
@@ -39,7 +41,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> listAllProductByCategory(Long id) {
-        return null;
+        List<Product> products = productRepository.retrieveProductListByCategory(id);
+        return products.stream().map(product -> mapperUtil.convert(product,new ProductDTO())).collect(Collectors.toList());
     }
 
     @Override
@@ -54,13 +57,19 @@ public class ProductServiceImpl implements ProductService {
         return products.stream().map(product -> mapperUtil.convert(product,new ProductDTO())).collect(Collectors.toList());
     }
 
-    @Override
-    public ProductDTO updateProduct(ProductDTO productDTO) {
-        return null;
-    }
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
-        return null;
+        productRepository.save(mapperUtil.convert(productDTO,new Product()));
+        return productDTO;
+    }
+
+    @Override
+    public ProductDTO updateProduct(ProductDTO productDTO) {
+        Optional<Product> find = productRepository.findById(productDTO.getId());
+        Product convert = mapperUtil.convert(productDTO,new Product());
+        convert.setId(find.get().getId());
+        productRepository.save(convert);
+        return productDTO;
     }
 }

@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/price/{price}")
-    public ResponseEntity<ResponseWrapper> getProductByName(@PathVariable("price") BigDecimal price){
+    public ResponseEntity<ResponseWrapper> getProductByPrice(@PathVariable("price") BigDecimal price){
         return ResponseEntity.ok(new ResponseWrapper("true",productService.listAllProductByPrice(price)));
     }
 
@@ -39,14 +39,25 @@ public class ProductController {
         return ResponseEntity.ok(new ResponseWrapper("true",productService.listTop3Product()));
     }
 
-//    @PostMapping
-//    public ResponseEntity<ResponseWrapper> createOrder(@RequestBody OrderDTO orderDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", orderRepository.createOrder(orderDTO)));
+    @GetMapping("/category/{id}")
+    public ResponseEntity<ResponseWrapper> getProductListByCategoryId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(new ResponseWrapper("true",productService.listAllProductByCategory(id)));
+    }
+
+    @PutMapping
+    public ResponseEntity<ResponseWrapper> updateProduct(@RequestBody ProductDTO productDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", productService.updateProduct(productDTO)));
+    }
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createProduct(@RequestBody ProductDTO productDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", productService.createProduct(productDTO)));
+    }
+
+//    @PostMapping("/{category}/{price}")
+//    public ResponseEntity<ResponseWrapper> createProductsCategoryAndPrice(@RequestBody ProductDTO productDTO){
+//        return ResponseEntity.ok(new ResponseWrapper("true", productService.listAllProductByPriceAndQuantity(price,quantity)));
 //    }
-//
-//    @PutMapping
-//    public ResponseEntity<ResponseWrapper> updateOrder(@RequestBody OrderDTO orderDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", orderRepository.updateOrder(orderDTO)));
-//    }
+
 
 }

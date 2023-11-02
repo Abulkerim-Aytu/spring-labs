@@ -8,6 +8,7 @@ import com.cydeo.lab08rest.service.DiscountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,11 +36,16 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public DiscountDTO updateDiscount(DiscountDTO dto) {
-        return null;
+        Optional<Discount> find = discountRepository.findById(dto.getId());
+        Discount convert = mapperUtil.convert(dto,new Discount());
+        convert.setId(find.get().getId());
+        discountRepository.save(convert);
+        return dto;
     }
 
     @Override
     public DiscountDTO createDiscount(DiscountDTO dto) {
-        return null;
+        discountRepository.save(mapperUtil.convert(dto,new Discount()));
+        return dto;
     }
 }

@@ -1,6 +1,7 @@
 package com.cydeo.lab08rest.controller;
 
 import com.cydeo.lab08rest.dto.CustomerDTO;
+import com.cydeo.lab08rest.dto.DiscountDTO;
 import com.cydeo.lab08rest.dto.ResponseWrapper;
 import com.cydeo.lab08rest.service.DiscountService;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +25,15 @@ public class DiscountController {
     public ResponseEntity<ResponseWrapper> getDiscountByName(@PathVariable("name") String name){
         return ResponseEntity.ok(new ResponseWrapper("true",discountService.listAllDiscountByName(name)));
     }
-//
-//    @PostMapping
-//    public ResponseEntity<ResponseWrapper> createAddress(@RequestBody CustomerDTO customerDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", customerService.createCustomer(customerDTO)));
-//    }
-//
-//    @PutMapping
-//    public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody CustomerDTO customerDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", customerService.updateCustomer(customerDTO)));
-//    }
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createDiscount(@RequestBody DiscountDTO discountDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", discountService.createDiscount(discountDTO)));
+    }
+
+    @PutMapping
+    public ResponseEntity<ResponseWrapper> updateDiscount(@RequestBody DiscountDTO discountDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", discountService.updateDiscount(discountDTO)));
+    }
 
 }

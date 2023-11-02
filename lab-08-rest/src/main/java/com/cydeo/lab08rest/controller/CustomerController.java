@@ -30,10 +30,10 @@ public class CustomerController {
     public ResponseEntity<ResponseWrapper> createAddress(@RequestBody CustomerDTO customerDTO){
         return ResponseEntity.ok(new ResponseWrapper("true", customerService.createCustomer(customerDTO)));
     }
-//
-//    @PutMapping
-//    public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody AddressDTO addressDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", addressService.updateAddress(addressDTO)));
-//    }
+
+    @PutMapping
+    public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody CustomerDTO customerDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", customerService.updateCustomer(customerDTO)));
+    }
 
 }

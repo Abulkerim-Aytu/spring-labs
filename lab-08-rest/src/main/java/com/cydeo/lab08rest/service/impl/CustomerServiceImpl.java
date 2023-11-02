@@ -8,6 +8,7 @@ import com.cydeo.lab08rest.service.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -34,7 +35,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
-        return null;
+        Optional<Customer> find = customerRepository.findById(customerDTO.getId());
+
+        Customer convert = mapperUtil.convert(customerDTO,new Customer());
+
+        convert.setId(find.get().getId());
+
+        customerRepository.save(convert);
+
+        return customerDTO;
     }
 
     @Override

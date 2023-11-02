@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 public class AddressDTO{
 
-    @JsonIgnore
     private Long id;
     private String name;
     private String zipCode;

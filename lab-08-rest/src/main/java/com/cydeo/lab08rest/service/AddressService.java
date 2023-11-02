@@ -12,6 +12,6 @@ public interface AddressService {
     List<AddressDTO> listAllAddressByCustomerId(Long id);
     List<AddressDTO> listAllAddressByCustomerIdAndName(Long id, String name);
     AddressDTO createAddress(AddressDTO addressDTO);
-    AddressDTO UpdateAddress(AddressDTO addressDTO);
+    AddressDTO updateAddress(AddressDTO addressDTO);
 
 }

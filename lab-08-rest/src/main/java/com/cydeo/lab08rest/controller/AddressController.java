@@ -45,7 +45,7 @@ public class AddressController {
 
     @PutMapping
     public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody AddressDTO addressDTO){
-        return ResponseEntity.ok(new ResponseWrapper("true", addressService.createAddress(addressDTO)));
+        return ResponseEntity.ok(new ResponseWrapper("true", addressService.updateAddress(addressDTO)));
     }
 
 }

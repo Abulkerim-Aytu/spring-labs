@@ -52,5 +52,14 @@ public class AddressServiceImpl implements AddressService {
         return addressDTO;
     }
 
+    @Override
+    public AddressDTO updateAddress(AddressDTO addressDTO) {
+        Address find= addressRepository.findById(addressDTO.getId()).get();
+        Address convert = mapperUtil.convert(addressDTO,new Address());
+        convert.setId(find.getId());
+        addressRepository.save(convert);
+        return addressDTO;
+    }
+
 
 }

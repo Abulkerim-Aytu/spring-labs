@@ -35,6 +35,11 @@ public class AddressController {
         return ResponseEntity.ok(new ResponseWrapper("true",addressService.listAllAddressByCustomerId(id)));
     }
 
+    @GetMapping("/customer/{customerId}/name/{name}")
+    public ResponseEntity<ResponseWrapper> getAddressListByCustomerAndCustomerName(@PathVariable("customerId") Long customerId, @PathVariable("name") String name){
+        return ResponseEntity.ok(new ResponseWrapper("true",addressService.listAllAddressByCustomerIdAndName(customerId,name)));
+    }
+
 
 
 }

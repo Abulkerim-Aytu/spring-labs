@@ -1,7 +1,9 @@
 package com.cydeo.lab08rest.service.impl;
 
 import com.cydeo.lab08rest.dto.AddressDTO;
+import com.cydeo.lab08rest.dto.CustomerDTO;
 import com.cydeo.lab08rest.entity.Address;
+import com.cydeo.lab08rest.entity.Customer;
 import com.cydeo.lab08rest.mapper.MapperUtil;
 import com.cydeo.lab08rest.repository.AddressRepository;
 import com.cydeo.lab08rest.service.AddressService;
@@ -37,4 +39,14 @@ public class AddressServiceImpl implements AddressService {
         List<Address> address= addressRepository.retrieveByCustomerId(id);
         return address.stream().map(address1 -> mapperUtil.convert(address, new AddressDTO())).collect(Collectors.toList());
     }
+
+    @Override
+    public List<AddressDTO> listAllAddressByCustomerIdAndName(Long id, String name) {
+        List<Address> address=addressRepository.findAllByCustomerIdAndName(id,name);
+        return address.stream().map(address1 -> mapperUtil.convert(address, new AddressDTO())).collect(Collectors.toList());
+    }
+
+
+
+
 }

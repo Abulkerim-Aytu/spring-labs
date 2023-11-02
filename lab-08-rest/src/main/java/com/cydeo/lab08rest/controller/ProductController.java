@@ -16,10 +16,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-//    @GetMapping
-//    public ResponseEntity<ResponseWrapper> getOrders(){
-//        return ResponseEntity.ok(new ResponseWrapper("true",orderRepository.listAllAddress()));
-//    }
+    @GetMapping
+    public ResponseEntity<ResponseWrapper> getProducts(){
+        return ResponseEntity.ok(new ResponseWrapper("true",productService.listAllProduct()));
+    }
 //
 //    @GetMapping("/paymentMethod/{paymentMethod}")
 //    public ResponseEntity<ResponseWrapper> getOrderByPaymentMethod(@PathVariable("paymentMethod") PaymentMethod paymentMethod){

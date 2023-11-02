@@ -4,12 +4,14 @@ import com.cydeo.lab08rest.dto.AddressDTO;
 import com.cydeo.lab08rest.dto.OrderDTO;
 import com.cydeo.lab08rest.entity.Address;
 import com.cydeo.lab08rest.entity.Order;
+import com.cydeo.lab08rest.enums.PaymentMethod;
 import com.cydeo.lab08rest.mapper.MapperUtil;
 import com.cydeo.lab08rest.repository.OrderRepository;
 import com.cydeo.lab08rest.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,22 +32,29 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderDTO> listAllOrderByPaymentMethods() {
-        return null;
+    public List<OrderDTO> listAllOrderByPaymentMethods(PaymentMethod paymentMethod) {
+        List<Order> order = orderRepository.findAllByPayment_PaymentMethod(paymentMethod);
+        return order.stream().map(order1 -> mapperUtil.convert(order,new OrderDTO())).collect(Collectors.toList());
     }
 
     @Override
     public List<OrderDTO> listAllOrderByEmail(String email) {
-        return null;
+        List<Order> order = orderRepository.findAllByCustomer_Email(email);
+        return order.stream().map(order1 -> mapperUtil.convert(order,new OrderDTO())).collect(Collectors.toList());
     }
 
     @Override
     public OrderDTO updateOrder(OrderDTO orderDTO) {
-        return null;
+        Optional<Order> find = orderRepository.findById(orderDTO.getId());
+        Order convert = mapperUtil.convert(orderDTO,new Order());
+        convert.setId(find.get().getId());
+        orderRepository.save(convert);
+        return orderDTO;
     }
 
     @Override
     public OrderDTO createOrder(OrderDTO orderDTO) {
-        return null;
+        orderRepository.save(mapperUtil.convert(orderDTO,new Order()));
+        return orderDTO;
     }
 }

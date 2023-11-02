@@ -7,4 +7,7 @@ import java.util.List;
 public interface AddressService {
 
     List<AddressDTO> listAllAddress();
+    List<AddressDTO>  listAllAddressesStartsWith(String keyWord);
+
+    List<AddressDTO> listAllAddressByCustomerId(Long id);
 }

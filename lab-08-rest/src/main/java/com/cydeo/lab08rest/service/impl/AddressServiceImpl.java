@@ -25,4 +25,16 @@ public class AddressServiceImpl implements AddressService {
         List<Address> address= addressRepository.findAll();
         return address.stream().map(addresses -> mapperUtil.convert(address,new AddressDTO())).collect(Collectors.toList());
     }
+
+    @Override
+    public List<AddressDTO> listAllAddressesStartsWith(String keyWord) {
+        List<Address> address= addressRepository.findAllByStreetStartingWith(keyWord);
+        return address.stream().map(address1 -> mapperUtil.convert(address, new AddressDTO())).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AddressDTO> listAllAddressByCustomerId(Long id) {
+        List<Address> address= addressRepository.retrieveByCustomerId(id);
+        return address.stream().map(address1 -> mapperUtil.convert(address, new AddressDTO())).collect(Collectors.toList());
+    }
 }

@@ -46,7 +46,11 @@ public class AddressServiceImpl implements AddressService {
         return address.stream().map(address1 -> mapperUtil.convert(address, new AddressDTO())).collect(Collectors.toList());
     }
 
-
+    @Override
+    public AddressDTO createAddress(AddressDTO addressDTO) {
+         addressRepository.save(mapperUtil.convert(addressDTO,new Address()));
+        return addressDTO;
+    }
 
 
 }

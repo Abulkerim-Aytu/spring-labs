@@ -9,9 +9,9 @@ public interface AddressService {
 
     List<AddressDTO> listAllAddress();
     List<AddressDTO>  listAllAddressesStartsWith(String keyWord);
-
     List<AddressDTO> listAllAddressByCustomerId(Long id);
-
     List<AddressDTO> listAllAddressByCustomerIdAndName(Long id, String name);
+    AddressDTO createAddress(AddressDTO addressDTO);
+    AddressDTO UpdateAddress(AddressDTO addressDTO);
 
 }

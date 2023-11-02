@@ -39,6 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
-        return null;
+        customerRepository.save(mapperUtil.convert(customerDTO,new Customer()));
+        return customerDTO;
     }
 }

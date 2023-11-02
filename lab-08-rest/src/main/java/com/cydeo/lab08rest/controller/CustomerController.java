@@ -1,5 +1,6 @@
 package com.cydeo.lab08rest.controller;
 
+import com.cydeo.lab08rest.dto.CustomerDTO;
 import com.cydeo.lab08rest.dto.ResponseWrapper;
 import com.cydeo.lab08rest.service.CustomerService;
 import org.springframework.http.ResponseEntity;
@@ -24,21 +25,11 @@ public class CustomerController {
     public ResponseEntity<ResponseWrapper> getAddressListByStartsWithAddress(@PathVariable("email") String email){
         return ResponseEntity.ok(new ResponseWrapper("true",customerService.listAllCustomerByEmail(email)));
     }
-//
-//    @GetMapping("/customer/{id}")
-//    public ResponseEntity<ResponseWrapper> getAddressListByStartsWithAddress(@PathVariable("id") Long id){
-//        return ResponseEntity.ok(new ResponseWrapper("true",addressService.listAllAddressByCustomerId(id)));
-//    }
-//
-//    @GetMapping("/customer/{customerId}/name/{name}")
-//    public ResponseEntity<ResponseWrapper> getAddressListByCustomerAndCustomerName(@PathVariable("customerId") Long customerId, @PathVariable("name") String name){
-//        return ResponseEntity.ok(new ResponseWrapper("true",addressService.listAllAddressByCustomerIdAndName(customerId,name)));
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<ResponseWrapper> createAddress(@RequestBody AddressDTO addressDTO){
-//        return ResponseEntity.ok(new ResponseWrapper("true", addressService.createAddress(addressDTO)));
-//    }
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createAddress(@RequestBody CustomerDTO customerDTO){
+        return ResponseEntity.ok(new ResponseWrapper("true", customerService.createCustomer(customerDTO)));
+    }
 //
 //    @PutMapping
 //    public ResponseEntity<ResponseWrapper> updateAddress(@RequestBody AddressDTO addressDTO){

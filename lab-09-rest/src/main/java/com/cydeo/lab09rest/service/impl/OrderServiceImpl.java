@@ -1,6 +1,7 @@
 package com.cydeo.lab09rest.service.impl;
 
 import com.cydeo.lab09rest.client.CurrencyApiClient;
+import com.cydeo.lab09rest.dto.CurrencyDTO;
 import com.cydeo.lab09rest.dto.OrderDTO;
 import com.cydeo.lab09rest.entity.Order;
 import com.cydeo.lab09rest.enums.PaymentMethod;
@@ -21,15 +22,15 @@ public class OrderServiceImpl implements OrderService {
     private final MapperUtil mapperUtil;
     private final CurrencyApiClient currencyApiClient;
 
-    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil, CurrencyApiClient currencyApiClient, String accessKey) {
-        this.orderRepository = orderRepository;
-        this.mapperUtil = mapperUtil;
-        this.currencyApiClient = currencyApiClient;
-        access_key = accessKey;
-    }
 
     @Value("${access_key}")
     private String access_key;
+
+    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil, CurrencyApiClient currencyApiClient) {
+        this.orderRepository = orderRepository;
+        this.mapperUtil = mapperUtil;
+        this.currencyApiClient = currencyApiClient;
+    }
 
     @Override
     public List<OrderDTO> listAllAddress() {
@@ -41,8 +42,9 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO findById(Long id) {
         Optional<Order> order = orderRepository.findById(id);
         OrderDTO orderDTO = mapperUtil.convert(order,new OrderDTO());
-        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.getCurrency()).);
-        return null;
+        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
+        orderDTO.setTotalPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
+        return orderDTO;
     }
 
     @Override
@@ -72,7 +74,9 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
-    private OrderDTO getCurrentCurrency(String currency){
-        return currencyApiClient.getCurrentCurrency(access_key,currency);
+    private CurrencyDTO getCurrentCurrency(String currency){
+          String source= "USD";
+          Integer format = 1;
+        return currencyApiClient.getCurrentCurrency(access_key,currency,source,format);
     }
 }

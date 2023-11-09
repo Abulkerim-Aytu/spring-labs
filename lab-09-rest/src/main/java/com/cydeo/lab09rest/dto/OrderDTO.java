@@ -5,15 +5,16 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.List;
 
 @Getter
 @Setter
 public class OrderDTO {
     private Long cartId;
-    private BigDecimal paidPrice;
-    private BigDecimal totalPrice;
+    private Double paidPrice;
+    private Double totalPrice;
     private Long customerId;
     private Long paymentId;
     private Long id;
-    private String currency;
+    private List<QuotesDTO> quotes;
 }

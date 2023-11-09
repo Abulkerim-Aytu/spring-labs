@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Currency;
 
 @Getter
 @Setter
@@ -14,4 +15,5 @@ public class OrderDTO {
     private Long customerId;
     private Long paymentId;
     private Long id;
+    private String currency;
 }

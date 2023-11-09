@@ -1,11 +1,13 @@
 package com.cydeo.lab09rest.service.impl;
 
+import com.cydeo.lab09rest.client.CurrencyApiClient;
 import com.cydeo.lab09rest.dto.OrderDTO;
 import com.cydeo.lab09rest.entity.Order;
 import com.cydeo.lab09rest.enums.PaymentMethod;
 import com.cydeo.lab09rest.mapper.MapperUtil;
 import com.cydeo.lab09rest.repository.OrderRepository;
 import com.cydeo.lab09rest.service.OrderService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +19,17 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final MapperUtil mapperUtil;
+    private final CurrencyApiClient currencyApiClient;
 
-    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil) {
+    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil, CurrencyApiClient currencyApiClient, String accessKey) {
         this.orderRepository = orderRepository;
         this.mapperUtil = mapperUtil;
+        this.currencyApiClient = currencyApiClient;
+        access_key = accessKey;
     }
+
+    @Value("${access_key}")
+    private String access_key;
 
     @Override
     public List<OrderDTO> listAllAddress() {
@@ -32,7 +40,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO findById(Long id) {
         Optional<Order> order = orderRepository.findById(id);
-        return mapperUtil.convert(order,new OrderDTO());
+        OrderDTO orderDTO = mapperUtil.convert(order,new OrderDTO());
+        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.getCurrency()).);
+        return null;
     }
 
     @Override
@@ -60,5 +70,9 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO createOrder(OrderDTO orderDTO) {
         orderRepository.save(mapperUtil.convert(orderDTO,new Order()));
         return orderDTO;
+    }
+
+    private OrderDTO getCurrentCurrency(String currency){
+        return currencyApiClient.getCurrentCurrency(access_key,currency);
     }
 }

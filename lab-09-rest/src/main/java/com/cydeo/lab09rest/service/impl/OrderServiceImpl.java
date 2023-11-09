@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO findById(Long id) {
         Optional<Order> order = orderRepository.findById(id);
         OrderDTO orderDTO = mapperUtil.convert(order,new OrderDTO());
-        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
-        orderDTO.setTotalPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
+//        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.));
+//        orderDTO.setTotalPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
         return orderDTO;
     }
 

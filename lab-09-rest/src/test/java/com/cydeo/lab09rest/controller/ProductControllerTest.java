@@ -64,11 +64,11 @@ class ProductControllerTest {
     public void getProductList() throws Exception {
 
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
-                        .get("/api/v1/product")
-                        .accept(MediaType.APPLICATION_JSON));
-                actions.andExpect(status().isOk())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].id").exists())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$.data.size()").value(500));
+                .get("/api/v1/product")
+                .accept(MediaType.APPLICATION_JSON));
+        actions.andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].id").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.size()").value(500));
     }
 
 
@@ -85,7 +85,7 @@ class ProductControllerTest {
 
 
     @Test
-    public void getProductListByName() throws Exception {
+    public void getProductByName() throws Exception {
 
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
                 .get("/api/v1/product/Tomatoes")
@@ -105,7 +105,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void getProductListByPrice() throws Exception {
+    public void getCountOfProductListByPrice() throws Exception {
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
                 .get("/api/v1/product/price/50")
                 .accept(MediaType.APPLICATION_JSON));
@@ -113,7 +113,7 @@ class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data").value(244));
     }
     @Test
-    public void getProductListByPriceAndQuantity() throws Exception {
+    public void getProductListByCategoryAndPrice() throws Exception {
         List<Long> array = new ArrayList<>();
         array.add(1L);
         array.add(2L);

@@ -3,6 +3,8 @@ package com.cydeo.lab08rest.service.impl;
 import com.cydeo.lab08rest.dto.OrderDTO;
 import com.cydeo.lab08rest.entity.Order;
 import com.cydeo.lab08rest.enums.PaymentMethod;
+import com.cydeo.lab08rest.exception.OrderNotFoundException;
+import com.cydeo.lab08rest.exception.ProductNotFoundException;
 import com.cydeo.lab08rest.mapper.MapperUtil;
 import com.cydeo.lab08rest.repository.OrderRepository;
 import com.cydeo.lab08rest.service.OrderService;
@@ -43,9 +45,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO updateOrder(OrderDTO orderDTO) {
-        Optional<Order> find = orderRepository.findById(orderDTO.getId());
+        Order find = orderRepository.findById(orderDTO.getId()).orElseThrow(() -> new OrderNotFoundException("No Order Found!"));
+
         Order convert = mapperUtil.convert(orderDTO,new Order());
-        convert.setId(find.get().getId());
+        convert.setId(find.getId());
         orderRepository.save(convert);
         return orderDTO;
     }

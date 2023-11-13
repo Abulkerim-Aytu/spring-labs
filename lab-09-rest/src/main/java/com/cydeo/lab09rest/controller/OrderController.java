@@ -17,9 +17,14 @@ public class OrderController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseWrapper> getOrders(@PathVariable("id") Long id){
-        return ResponseEntity.ok(new ResponseWrapper("true",orderService.findById(id)));
+    public ResponseEntity<ResponseWrapper> getOrders(@PathVariable("id") Long id,@RequestParam String currencies){
+        return ResponseEntity.ok(new ResponseWrapper("true",orderService.findById(id,currencies)));
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<ResponseWrapper> getOrders(@PathVariable("id") Long id){
+//        return ResponseEntity.ok(new ResponseWrapper("true",orderService.findById(id)));
+//    }
 
 //    @GetMapping("/paymentMethod/{paymentMethod}")
 //    public ResponseEntity<ResponseWrapper> getOrderByPaymentMethod(@PathVariable("paymentMethod") PaymentMethod paymentMethod){

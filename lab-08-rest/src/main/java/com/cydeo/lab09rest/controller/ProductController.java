@@ -28,8 +28,13 @@ public class ProductController {
     }
 
     @GetMapping("/price/{price}")
-    public ResponseEntity<ResponseWrapper> getProductByPrice(@PathVariable("price") BigDecimal price){
-        return ResponseEntity.ok(new ResponseWrapper("true",productService.listAllProductByPrice(price)));
+    public ResponseEntity<ResponseWrapper> countAllByPrice(@PathVariable("price") BigDecimal price) {
+        return ResponseEntity.ok(ResponseWrapper.builder()
+                .code(200)
+                .success(true)
+                .message("Product count is calculated successfully.")
+                .data(productService.listAllProductByPrice(price))
+                .build());
     }
 
     @GetMapping("/top3")

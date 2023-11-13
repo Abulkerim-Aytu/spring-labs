@@ -39,11 +39,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO findById(Long id) {
+    public OrderDTO findById(Long id,String currency) {
         Optional<Order> order = orderRepository.findById(id);
         OrderDTO orderDTO = mapperUtil.convert(order,new OrderDTO());
-//        orderDTO.setPaidPrice(getCurrentCurrency(orderDTO.));
-//        orderDTO.setTotalPrice(getCurrentCurrency(orderDTO.getQuotes().toString()).getQuotes().getUsdcad());
+        orderDTO.setPaidPrice(getCurrency(currency).getQuotes().getUsdall());
+//        orderDTO.setTotalPrice(getCurrentCurrency(currency).getQuotes().getUsdall());
         return orderDTO;
     }
 
@@ -74,9 +74,8 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
-    private CurrencyDTO getCurrentCurrency(String currency){
-          String source= "USD";
-          Integer format = 1;
-        return currencyApiClient.getCurrentCurrency(access_key,currency,source,format);
+    private CurrencyDTO getCurrency(String currency){
+        CurrencyDTO currencyDTO = currencyApiClient.getCurrentCurrency(access_key,currency);
+        return currencyDTO;
     }
 }

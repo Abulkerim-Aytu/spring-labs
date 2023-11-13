@@ -17,7 +17,12 @@ public class AddressController {
 
     @GetMapping
     public ResponseEntity<ResponseWrapper> getAddress(){
-        return ResponseEntity.ok(new ResponseWrapper("true",addressService.listAllAddress()));
+        return ResponseEntity.ok(ResponseWrapper.builder()
+                .code(200)
+                .success(true)
+                .message("Address are retrieved successfully.")
+                .data(addressService.listAllAddress())
+                .build());
     }
 
     @GetMapping("/startsWith/{address}")

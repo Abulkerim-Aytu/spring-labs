@@ -1,15 +1,15 @@
 package com.cydeo.lab09rest.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 // jackson trying to convert This class(ResponseWrapper) to JSON.
 // Here we use Getter and Setter because Jackson doing mapping based on getter and setter.
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ResponseWrapper {
     // This class is created for customize JSON Objects.
     // We will see this Object on API JSON.

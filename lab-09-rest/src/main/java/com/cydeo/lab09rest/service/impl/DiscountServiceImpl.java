@@ -2,6 +2,7 @@ package com.cydeo.lab09rest.service.impl;
 
 import com.cydeo.lab09rest.dto.DiscountDTO;
 import com.cydeo.lab09rest.entity.Discount;
+import com.cydeo.lab09rest.exception.DiscountNotFoundException;
 import com.cydeo.lab09rest.mapper.MapperUtil;
 import com.cydeo.lab09rest.repository.DiscountRepository;
 import com.cydeo.lab09rest.service.DiscountService;
@@ -36,9 +37,9 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public DiscountDTO updateDiscount(DiscountDTO dto) {
-        Optional<Discount> find = discountRepository.findById(dto.getId());
+        Discount find = discountRepository.findById(dto.getId()).orElseThrow(() -> new DiscountNotFoundException("No Discount Found!"));
         Discount convert = mapperUtil.convert(dto,new Discount());
-        convert.setId(find.get().getId());
+        convert.setId(find.getId());
         discountRepository.save(convert);
         return dto;
     }

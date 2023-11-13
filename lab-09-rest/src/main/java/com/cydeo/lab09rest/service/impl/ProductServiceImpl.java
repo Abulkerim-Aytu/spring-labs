@@ -83,7 +83,6 @@ public class ProductServiceImpl implements ProductService {
         Product updatedProduct = productRepository.save(productToUpdate);
 
         return mapperUtil.convert(updatedProduct, new ProductDTO());
-
     }
 
 }

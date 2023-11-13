@@ -2,6 +2,7 @@ package com.cydeo.lab09rest.service.impl;
 
 import com.cydeo.lab09rest.dto.CustomerDTO;
 import com.cydeo.lab09rest.entity.Customer;
+import com.cydeo.lab09rest.exception.CustomerNotFoundException;
 import com.cydeo.lab09rest.mapper.MapperUtil;
 import com.cydeo.lab09rest.repository.CustomerRepository;
 import com.cydeo.lab09rest.service.CustomerService;
@@ -35,11 +36,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
-        Optional<Customer> find = customerRepository.findById(customerDTO.getId());
+        Customer find = customerRepository.findById(customerDTO.getId())
+                .orElseThrow(() -> new CustomerNotFoundException("No Customer Found!"));
 
         Customer convert = mapperUtil.convert(customerDTO,new Customer());
 
-        convert.setId(find.get().getId());
+        convert.setId(find.getId());
 
         customerRepository.save(convert);
 

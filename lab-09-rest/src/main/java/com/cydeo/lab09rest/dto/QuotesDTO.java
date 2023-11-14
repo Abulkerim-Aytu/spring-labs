@@ -252,7 +252,7 @@ public class QuotesDTO {
     @JsonProperty("USDCNY")
     private Double usdcny;
     @JsonProperty("USDCOP")
-    private Double usdcop;
+    private Integer usdcop;
     @JsonProperty("USDCRC")
     private Double usdcrc;
     @JsonProperty("USDCUC")
@@ -312,7 +312,7 @@ public class QuotesDTO {
     @JsonProperty("USDHUF")
     private Double usdhuf;
     @JsonProperty("USDIDR")
-    private Integer usdidr;
+    private Double usdidr;
     @JsonProperty("USDILS")
     private Double usdils;
     @JsonProperty("USDIMP")
@@ -855,12 +855,12 @@ public class QuotesDTO {
     }
 
     @JsonProperty("USDCOP")
-    public Double getUsdcop() {
+    public Integer getUsdcop() {
         return usdcop;
     }
 
     @JsonProperty("USDCOP")
-    public void setUsdcop(Double usdcop) {
+    public void setUsdcop(Integer usdcop) {
         this.usdcop = usdcop;
     }
 
@@ -1155,12 +1155,12 @@ public class QuotesDTO {
     }
 
     @JsonProperty("USDIDR")
-    public Integer getUsdidr() {
+    public Double getUsdidr() {
         return usdidr;
     }
 
     @JsonProperty("USDIDR")
-    public void setUsdidr(Integer usdidr) {
+    public void setUsdidr(Double usdidr) {
         this.usdidr = usdidr;
     }
 

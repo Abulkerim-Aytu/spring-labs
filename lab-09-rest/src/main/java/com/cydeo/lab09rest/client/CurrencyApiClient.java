@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface CurrencyApiClient {
 
     @GetMapping("/live")
-    CurrencyDTO getCurrentCurrency(@RequestParam(value = "access_key") String key,
-                                   @RequestParam(value = "currencies") String currency);
+    CurrencyDTO getCurrentCurrency(@RequestParam(name = "access_key") String accessKey,
+                                   @RequestParam(name = "currencies") String currencies,
+                                   @RequestParam(name = "source") String source,
+                                   @RequestParam(name = "format") Integer format);
 }
 

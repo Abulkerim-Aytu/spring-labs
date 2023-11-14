@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderService {
     List<OrderDTO> listAllAddress();
-    OrderDTO findById(Long id,String currency);
+    OrderDTO findById(Long id,String currency) throws Exception;
     List<OrderDTO> listAllOrderByPaymentMethods(PaymentMethod paymentMethod);
     List<OrderDTO> listAllOrderByEmail(String email);
     OrderDTO updateOrder(OrderDTO orderDTO);

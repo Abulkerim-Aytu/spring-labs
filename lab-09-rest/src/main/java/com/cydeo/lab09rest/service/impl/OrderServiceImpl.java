@@ -1,7 +1,6 @@
 package com.cydeo.lab09rest.service.impl;
 
 import com.cydeo.lab09rest.client.CurrencyApiClient;
-import com.cydeo.lab09rest.dto.CurrencyDTO;
 import com.cydeo.lab09rest.dto.OrderDTO;
 import com.cydeo.lab09rest.entity.Order;
 import com.cydeo.lab09rest.enums.PaymentMethod;
@@ -12,8 +11,8 @@ import com.cydeo.lab09rest.service.OrderService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,12 +39,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO findById(Long id,String currency) {
-        Optional<Order> order = orderRepository.findById(id);
-        OrderDTO orderDTO = mapperUtil.convert(order,new OrderDTO());
-        orderDTO.setPaidPrice(getCurrency(currency).getQuotes().getUsdall());
-//        orderDTO.setTotalPrice(getCurrentCurrency(currency).getQuotes().getUsdall());
-        return orderDTO;
+    public OrderDTO findById(Long id,String currency) throws Exception {
+        Order order = orderRepository.findById(id).orElseThrow(() -> new Exception("Order Not Found!"));
+        if(currency != null) {
+            BigDecimal rate = currencyApiClient.getCurrentCurrency(access_key, currency, "USD", 1).getQuotes().get("USD" + currency);
+            order.setTotalPrice(order.getTotalPrice().multiply(rate));
+            order.setPaidPrice(order.getPaidPrice().multiply(rate));
+        }
+        return mapperUtil.convert(order, new OrderDTO());
     }
 
     @Override
@@ -75,10 +76,5 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO createOrder(OrderDTO orderDTO) {
         orderRepository.save(mapperUtil.convert(orderDTO,new Order()));
         return orderDTO;
-    }
-
-    private CurrencyDTO getCurrency(String currency){
-        CurrencyDTO currencyDTO = currencyApiClient.getCurrentCurrency(access_key,currency);
-        return currencyDTO;
     }
 }

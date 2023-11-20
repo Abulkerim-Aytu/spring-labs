@@ -24,18 +24,19 @@ import java.util.stream.Stream;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+    @Value("${access_key}")
+    private String access_key;
+
     private final OrderRepository orderRepository;
     private final MapperUtil mapperUtil;
     private final CurrencyClient currencyClient;
 
-    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil, CurrencyClient currencyClient, String accessKey) {
+    public OrderServiceImpl(OrderRepository orderRepository, MapperUtil mapperUtil, CurrencyClient currencyClient) {
         this.orderRepository = orderRepository;
         this.mapperUtil = mapperUtil;
         this.currencyClient = currencyClient;
     }
 
-    @Value("${access_key}")
-    private String access_key;
 
     @Override
     public List<OrderDTO> listAllAddress() {

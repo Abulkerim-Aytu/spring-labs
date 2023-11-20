@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,10 +40,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO findById(Long id,String currency) throws Exception {
+    public OrderDTO findById(Long id, Optional<String> currency) throws Exception {
         Order order = orderRepository.findById(id).orElseThrow(() -> new Exception("Order Not Found!"));
-        if(currency != null) {
-            BigDecimal rate = currencyApiClient.getCurrentCurrency(access_key, currency, "USD", 1).getQuotes().get("USD" + currency);
+        if(currency.isPresent()) {
+            BigDecimal rate = currencyApiClient.getCurrentCurrency(access_key, String.valueOf(currency), "USD", 1).getQuotes().get("USD" + currency);
             order.setTotalPrice(order.getTotalPrice().multiply(rate));
             order.setPaidPrice(order.getPaidPrice().multiply(rate));
         }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/order")
@@ -19,9 +20,10 @@ public class OrderController {
         this.orderService = orderRepository;
     }
 
+    // Here if at requestParam parameter NOT required then we need to use Optional.
     @GetMapping("/{id}")
     public ResponseEntity<ResponseWrapper> getOrders(@PathVariable("id") Long id,
-                                                     @RequestParam(required = false,name ="currencies") String currencies) throws Exception {
+                                                     @RequestParam(required = false,name ="currencies") Optional<String> currencies) throws Exception {
             OrderDTO order = orderService.findById(id, currencies);
             return ResponseEntity.ok(
                     ResponseWrapper.builder()

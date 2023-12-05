@@ -45,6 +45,7 @@ public class OrderController {
         return ResponseEntity.ok(new ResponseWrapper("true", orderService.updateOrder(orderDTO)));
     }
 
+    // Here if at requestParam parameter NOT required then we need to use Optional.
     @GetMapping("{orderId}")
     public ResponseEntity<ResponseWrapper> getById(@PathVariable("orderId") Long orderId,
                                                    @RequestParam(value = "currency", required = false) Optional<String> currency) {

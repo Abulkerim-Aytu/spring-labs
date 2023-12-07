@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class CartServiceImplIntegrationTest {
 
-    @Autowired
+    @Autowired // This annotation mostly used with interface. Help us to use its implemanttatin.
     private CartService cartService;
     @Autowired
     private CustomerRepository customerRepository;

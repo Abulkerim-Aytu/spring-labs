@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 // Unit Testing Works with Mock Data. So instead of using real data we use Mockito to Mock the DATA.
 // Integration Testing works with Real Data.
 
-// To be able to mock some services and repositories and all other parties we need to this class.
+// To be able to mock some services and repositories and all other parties we need to add this class.
 // You also have the @InjectMocks annotation which tries to do constructor, method or field dependency injection based on the type.
 @ExtendWith(MockitoExtension.class)
 public class CartServiceImplUnitTest {

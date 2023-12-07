@@ -1,9 +1,9 @@
 package com.cydeo.lab09rest.repository;
 
-import com.cydeo.lab08rest.entity.Cart;
-import com.cydeo.lab08rest.entity.Customer;
-import com.cydeo.lab08rest.enums.CartState;
-import com.cydeo.lab08rest.enums.DiscountType;
+import com.cydeo.lab09rest.entity.Cart;
+import com.cydeo.lab09rest.entity.Customer;
+import com.cydeo.lab09rest.enums.CartState;
+import com.cydeo.lab09rest.enums.DiscountType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

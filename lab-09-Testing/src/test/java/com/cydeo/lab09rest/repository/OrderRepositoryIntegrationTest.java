@@ -1,6 +1,6 @@
 package com.cydeo.lab09rest.repository;
 
-import com.cydeo.lab08rest.entity.Order;
+import com.cydeo.lab09rest.entity.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

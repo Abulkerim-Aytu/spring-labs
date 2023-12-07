@@ -1,14 +1,14 @@
 package com.cydeo.lab09rest.service.integration;
 
-import com.cydeo.lab08rest.entity.Cart;
-import com.cydeo.lab08rest.entity.Customer;
-import com.cydeo.lab08rest.entity.Order;
-import com.cydeo.lab08rest.enums.PaymentMethod;
-import com.cydeo.lab08rest.repository.CartRepository;
-import com.cydeo.lab08rest.repository.CustomerRepository;
-import com.cydeo.lab08rest.repository.OrderRepository;
-import com.cydeo.lab08rest.service.CartService;
-import com.cydeo.lab08rest.service.OrderService;
+import com.cydeo.lab09rest.entity.Cart;
+import com.cydeo.lab09rest.entity.Customer;
+import com.cydeo.lab09rest.entity.Order;
+import com.cydeo.lab09rest.enums.PaymentMethod;
+import com.cydeo.lab09rest.repository.CartRepository;
+import com.cydeo.lab09rest.repository.CustomerRepository;
+import com.cydeo.lab09rest.repository.OrderRepository;
+import com.cydeo.lab09rest.service.CartService;
+import com.cydeo.lab09rest.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

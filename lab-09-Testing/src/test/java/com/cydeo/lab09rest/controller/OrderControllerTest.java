@@ -30,7 +30,7 @@ class OrderControllerTest {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setPaidPrice(BigDecimal.valueOf(23));
         orderDTO.setCustomerId(1L);
-        orderDTO.setPaymentId(2L);
+        orderDTO.setPaymentId(1L);
         orderDTO.setTotalPrice(BigDecimal.valueOf(234));
         orderDTO.setCartId(12L);
 
@@ -66,9 +66,9 @@ class OrderControllerTest {
     public void getAddressList() throws Exception {
 
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
-                        .get("/api/v1/order")
-                        .accept(MediaType.APPLICATION_JSON));
-                actions.andExpect(status().isOk());
+                .get("/api/v1/order")
+                .accept(MediaType.APPLICATION_JSON));
+        actions.andExpect(status().isOk());
     }
 
 

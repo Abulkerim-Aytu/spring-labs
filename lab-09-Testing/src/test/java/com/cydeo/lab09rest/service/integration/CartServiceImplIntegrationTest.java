@@ -1,15 +1,15 @@
 package com.cydeo.lab09rest.service.integration;
 
-import com.cydeo.lab08rest.entity.Cart;
-import com.cydeo.lab08rest.entity.CartItem;
-import com.cydeo.lab08rest.entity.Customer;
-import com.cydeo.lab08rest.entity.Product;
-import com.cydeo.lab08rest.enums.CartState;
-import com.cydeo.lab08rest.repository.CartItemRepository;
-import com.cydeo.lab08rest.repository.CartRepository;
-import com.cydeo.lab08rest.repository.CustomerRepository;
-import com.cydeo.lab08rest.repository.ProductRepository;
-import com.cydeo.lab08rest.service.CartService;
+import com.cydeo.lab09rest.entity.Cart;
+import com.cydeo.lab09rest.entity.CartItem;
+import com.cydeo.lab09rest.entity.Customer;
+import com.cydeo.lab09rest.entity.Product;
+import com.cydeo.lab09rest.enums.CartState;
+import com.cydeo.lab09rest.repository.CartItemRepository;
+import com.cydeo.lab09rest.repository.CartRepository;
+import com.cydeo.lab09rest.repository.CustomerRepository;
+import com.cydeo.lab09rest.repository.ProductRepository;
+import com.cydeo.lab09rest.service.CartService;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

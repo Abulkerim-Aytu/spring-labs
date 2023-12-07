@@ -1,5 +1,6 @@
 package com.cydeo.lab09rest.repository;
 
+import com.cydeo.lab09rest.entity.Cart;
 import com.cydeo.lab09rest.entity.Order;
 import com.cydeo.lab09rest.enums.PaymentMethod;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Long> {
-
     //Write a derived query to get top 5 orders by order by total price desc
     List<Order> findTop5ByOrderByTotalPriceDesc();
 
@@ -27,18 +27,20 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
 
     //Write a native query to get all orders by specific product name
     @Query(value = "SELECT * FROM orders o JOIN cart c ON o.cart_id = c.id " +
-                    "JOIN cart_item ci ON ci.cart_id = c.id " +
-                    "JOIN product p ON ci.product_id= p.id WHERE p.name = ?1", nativeQuery = true)
+            "JOIN cart_item ci ON ci.cart_id = c.id " +
+            "JOIN product p ON ci.product_id= p.id WHERE p.name = ?1", nativeQuery = true)
     List<Order> retrieveAllOrdersByProductName(@Param("name") String name);
 
     //Write a native query to get all orders by specific categoryId
+    //Write a JPQL query to get all orders by totalPrice and paidPrice are equals
+
     @Query(value = "SELECT * FROM orders o JOIN cart c ON o.cart_id = c.id " +
             "JOIN cart_item ci ON ci.cart_id = c.id " +
-            "JOIN product p ON ci.product_id= p.id " +
-            "JOIN category ca ON ca.id = p.c_id WHERE ca.id = ?1", nativeQuery = true)
+            "JOIN product p ON ci.product_id = p.id " +
+            "JOIN product_category_rel pcr ON pcr.p_id = p.id " +
+            "JOIN category ca ON ca.id = pcr.c_id WHERE ca.id = ?1", nativeQuery = true)
     List<Order> retrieveAllOrdersByCategoryId(@Param("id") Long id);
 
-    //Write a JPQL query to get all orders by totalPrice and paidPrice are equals
     @Query("SELECT o FROM Order o WHERE o.paidPrice = o.totalPrice")
     List<Order> retrieveAllOrdersBetweenTotalPriceAndPaidPriceIsSame();
 
@@ -47,4 +49,5 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     @Query("SELECT o FROM Order o WHERE o.paidPrice<>o.totalPrice AND o.cart.discount IS NOT NULL")
     List<Order> findAllByPaidPriceAndTotalPriceAEqualsAndCartDiscountIdIsNull();
 
+    Order findAllByCart(Cart cart);
 }

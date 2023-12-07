@@ -64,11 +64,11 @@ class ProductControllerTest {
     public void getProductList() throws Exception {
 
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
-                        .get("/api/v1/product")
-                        .accept(MediaType.APPLICATION_JSON));
-                actions.andExpect(status().isOk())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].id").exists())
-                        .andExpect(MockMvcResultMatchers.jsonPath("$.data.size()").value(500));
+                .get("/api/v1/product")
+                .accept(MediaType.APPLICATION_JSON));
+        actions.andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data[0].id").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.size()").value(500));
     }
 
 
